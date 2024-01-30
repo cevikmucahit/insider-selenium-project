@@ -67,6 +67,8 @@ Chrome and Mozilla browsers.
 - **qualityAssurancePage.py:** The file containing methods specific to the Quality Assurance page (QualityAssurancePage).
 - **test_base.py:** In the config/__init__.py file, the WebDriver defined is marked as a fixture within this file. This
   way, the driver is defined as an argument in all test cases.
+
+**testCases**/:The folder where test cases are stored.
 - **test_homePage.py:** The file containing test cases related to the homepage (HomePage).
 - **test_careersPage.py:** The file containing test cases related to the Careers page (CareersPage).
 - **test_qualityAssurancePage.py:** The file containing test cases related to the Quality Assurance page (QualityAssurancePage).
