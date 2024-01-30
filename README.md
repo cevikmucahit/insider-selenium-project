@@ -15,9 +15,9 @@
 
 # Project Details
 
-Bu proje UseInsider sitesi için UI otomasyon testlerini içerir. Anasayfa, Careers ve QualityAssurcePage sayfaları için
-test case’ler hazırlanmıştır. Proje Python’ın Pytest Kütüphanesi kullanılarak yazılmıştır. Chrome ve Mozilla
-tarayıcılarında testler koşulmaktadır.
+This project includes UI automation tests for the UseInsider website. Test cases have been prepared for the homepage,
+Careers, and QualityAssurancePage. The project is written using Python's Pytest library. The tests are executed on
+Chrome and Mozilla browsers.
 
 ### Project Video
 
@@ -53,25 +53,23 @@ tarayıcılarında testler koşulmaktadır.
     |   |   __init__.py
 
 ---
-**config/:** Projenin konfigürasyon dosyalarının bulunduğu klasör.
+**config/:** The folder where the configuration files of the project are located.
 
-- **init.py:** WebDriver'ın konfigürasyonun olduğu dosya.
-- **constants.py:** Sabit değişkenlerini bulunduğu dosya.
+- **init.py:** The file where the configuration of the WebDriver is specified
+- **constants.py:** The file where constant variables are located.
 
-**pages/:** Test yazılırken sayfalara özel kullanılacak methodların bulunduğu klasör.
+**pages/:** The folder where methods specific to each page are stored when writing tests.
 
-- **base.py:** Her test senaryolarında kullanabilecek global methodları içeren dosya. Sayfalara özel classlar bu dosya
-  içindeki class'tan kalıtım alır.
-- **homePage.py:** Ana sayfaya (HomePage) özel methodların bulunduğu dosya.
-- **careersPage.py:** Kariyer sayfasına (CareersPage) özel methodların bulunduğu dosya.
-- **qualityAssurancePage.py:** Quality Assurance sayfasına (QualityAssurancePage) özel methodların bulunduğu dosya.
-  **testCases/:** Test case'lerin bulunduğu klasör.
-- **test_base.py:** config/init.py içinde tanımlanan WebDriver bu dosya içinde fixture olarak işaretlenir. Bu sayede tüm
-  test caselerde bu driver argüman olarak tanımlanır.
-- **test_homePage.py:** Ana sayfa (HomePage) ile ilgili test case'leri içeren dosya.
-- **test_careersPage.py:** Kariyer sayfası (CareersPage) ile ilgili test case'leri içeren dosya.
-- **test_qualityAssurancePage.py:** Quality Assurance sayfası (QualityAssurancePage) ile ilgili test case'leri içeren
-  dosya.
+- **base.py:** The file containing global methods that can be used in every test scenario. Page-specific classes inherit
+  from the class within this file.
+- **homePage.py:** The file containing methods specific to the homepage
+- **careersPage.py:** The file containing methods specific to the Careers page (CareersPage).
+- **qualityAssurancePage.py:** The file containing methods specific to the Quality Assurance page (QualityAssurancePage).
+- **test_base.py:** In the config/__init__.py file, the WebDriver defined is marked as a fixture within this file. This
+  way, the driver is defined as an argument in all test cases.
+- **test_homePage.py:** The file containing test cases related to the homepage (HomePage).
+- **test_careersPage.py:** The file containing test cases related to the Careers page (CareersPage).
+- **test_qualityAssurancePage.py:** The file containing test cases related to the Quality Assurance page (QualityAssurancePage).
 
 ![flow](flow.png)
 
@@ -83,69 +81,69 @@ tarayıcılarında testler koşulmaktadır.
 
 ### test_homePage.py
 
-Bu test dosyasında 2 adet test bulunmaktadır.
+This test file contains 2 tests:
 
 1. Test:
-    - ([https://useinsider.com/](https://useinsider.com/)) sayfasını açar.
-    - Eğer cookie uyarısı varsa, kapatır.
-    - Daha sonra `router.home-page` elementinin varlığını kontrol eder.
-    - Eğer varsa, test başarılı olur.
+    - Opens the page https://useinsider.com/.
+    - Closes the cookie alert if present
+    - Checks the existence of the `router.home-page` element.
+    - If it exists, the test is successful.
 2. Test:
-    - Company header menüsünden "**Company**" butonuna tıklanır.
-    - Ardından açılan menüden "**Careers**" butonuna tıklanır.
-    - `router.career-page` elementinin varlığını kontrol eder.
-    - Eğer varsa, test başarılı olur.
+    - Clicks on the  "**Company**"  button from the Company header menu.
+    - Then clicks on the "**Careers**" button from the opened menu.
+    - Checks the existence of the `router.career-page` element.
+    - If it exists, the test is successful.
 
 ### test_careerPage.py
 
-Bu dosyada 3 adet test bulunmaktadır:
+This file contains 3 tests:
 
 1. Test:
-    - Career sayfasını açar
-    - Eğer cookie uyarısı varsa, kapatılır
-    - Sayfada lokasyonlara scroll yapılır (`0.7` saniye beklenir, scroll animasyonlu bir şekilde yapıldığı için. kod 0.7
-      saniye bekletilir)
-    - `actual_our_locations_list` adlı boş bir liste oluşturulur.
-    - Lokasyonlar bu liste eklenir.
-    - `result_location_list` constant ile karşılaştırılır.
-    - Eğer sonuçlar aynıysa, test başarılı olur.
+    - Opens the Careers page.
+    - Closes the cookie alert if present.
+    - Scrolls to the locations on the page (waits for 0.7 seconds; this delay is due to the animated scroll, and the
+      code is paused for 0.7 seconds).
+    - Creates an empty list named `actual_our_locations_list`.
+    - Adds locations to this list
+    - Compares the `result_location_list` constant with the actual locations.
+    - If the results match, the test is successful
 2. Test:
-    - Departman listesine scroll yapılır (`0.7` saniye beklenir, scroll animasyonlu bir şekilde yapıldığı için. kod 0.7
-      saniye bekletilir).
-    - See All Teams butonuna tıklanır.
-    - `actual_departments_list` adlı boş bir liste oluşturulur.
-    - Departmanlar bu liste eklenir.
-    - `result_departments_list` constant ile karşılaştırılır.
-    - Eğer sonuçlar aynıysa, test başarılı olur.
+    - Scrolls to the department list (waits for 0.7 seconds; this delay is due to the animated scroll, and the code is
+      paused for 0.7 seconds).
+    - Clicks on the See All Teams button.
+    - Creates an empty list named `actual_departments_list`.
+    - Adds departments to this list.
+    - Compares the `result_departments_list` constant with the actual departments.
+    - If the results match, the test is successful.
 3. Test:
-    - Sayfadaki "**Life at Insider**" kısmının varlığı kontrol edilir.
+    - Checks the existence of the "**Life at Insider**" section on the page.
 
 ### test_qualityAssurancePage.py
 
-Bu sayfada 5 tane test bulunmaktadır:
+This file contains 5 tests:
 
 1. Test:
-    - Quality Assurance sayfasını açar.
-    - Eğer cookie uyarısı varsa, kapatılır.
-    - See All QA Jobs butonuna tıklanır.
-    - Lokasyon dropdown'ından "**Istanbul, Turkey**" seçilir.
-    - Dropdown'da "**Istanbul, Turkey**" seçili mi kontrol edilir.
+    - Opens the Quality Assurance page.
+    - Closes the cookie alert if present.
+    - Clicks on the See All QA Jobs button.
+    - Selects "**Istanbul, Turkey**" from the location dropdown.
+    - Checks if  "**Istanbul, Turkey**" is selected in the dropdown.
 2. Test:
-    - Departman olarak Quality Assurance seçilir.
-    - Departman dropdown'ında "**Quality Assurance**" seçili mi kontrol edilir.
+    - Selects Quality Assurance as the department.
+    - Checks if "**Quality Assurance**" is selected in the department dropdown.
 3. Test:
-    - Dropdown'lar seçildikten sonra job list'in varlığı kontrol edilir.
+    - Checks the existence of the job list after selecting the dropdowns.
 4. Test:
-    - Tüm iş ilanlarının İstanbul, Türkiye konumunda ve Quality Assurance pozisyonunda olduğu kontrol edilir.
+    - Verifies that all job listings are in Istanbul, Turkey, and for Quality Assurance positions.
 5. Test:
-    - Pozisyonlara scroll yapılır (`1` saniye beklenir, scroll animasyonlu bir şekilde yapıldığı için. kod 1 saniye
-      bekletilir).
-    - "**View Role**" mouse hover özelliği ile görünür olduğu için, pozisyona focus olunur.
-    - Pozisyonun başlığı değişkene atanır. (İlandaki başlığa göre karşılaştırılacak)
-    - "**View Role**" butonuna tıklanır.
-    - Yeni sekmede Lever ilanı açılır.
-    - Driver, Lever sekmesine geçiş yapar.
-    - Leverdaki ilanın başlığı değişkene atanır.
-    - Pozisyonun başlığı ve Leverdaki ilanın başlığı karşılaştırılır.
-    - Tüm işlemler her bir pozisyon için tekrar kontrol edilir.
-    - Eğer liste uyumsuzluk yoksa, test başarılı olur.
+    - Scrolls to the positions (waits for `1` second; this delay is due to the animated scroll, and the code is paused
+      for 1 second).
+    - Since the "**View Role**"  is visible with the mouse hover feature, focus is given to the position.
+    - The title of the position is assigned to a variable (to be compared based on the title in the advertisement).
+    - Clicks on the "**View Role**" button.
+    - Opens the Lever advertisement in a new tab.
+    - Switches the driver to the Lever tab.
+    - Assigns the title of the advertisement in Lever to a variable
+    - Compares the title of the position with the title in the Lever advertisement.
+    - These steps are repeated for each position.
+    - If there are no mismatches in the list, the test is successful.
